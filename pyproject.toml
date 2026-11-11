@@ -3,21 +3,19 @@ name = "ai-agent-data-lab"
 version = "1.0.0"
 description = "Připravené prostředí pro analýzu dat s AI agentem (Python, uv, DuckDB, AGENTS.md)"
 readme = "README.md"
-requires-python = ">=3.13,<3.14"
-# Verze jsou pevné, aby všichni měli stejné prostředí a stejná čísla.
-# duckdb musí mít stejnou verzi jako DuckDB CLI (1.5.6), jinak nemusí jít
-# databázový soubor otevřít z druhého nástroje.
+requires-python = ">=3.12"
+# Konkrétní verze drží uv.lock. Aktualizace: uv lock --upgrade && uv sync
 dependencies = [
-    "duckdb==1.5.6",
-    "pandas==3.1.0",
-    "pyarrow==26.0.0",
-    "numpy==2.5.4",
-    "scipy==1.18.1",
-    "matplotlib==3.11.2",
-    "requests==2.34.2",
-    "pyyaml==6.0.3",
-    "pytest==9.2.0",
-    "tzdata==2026.6",
+    "duckdb",
+    "pandas",
+    "pyarrow",
+    "numpy",
+    "scipy",
+    "matplotlib",
+    "requests",
+    "pyyaml",
+    "pytest",
+    "tzdata",
 ]
 
 [tool.uv]

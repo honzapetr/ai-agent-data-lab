@@ -7,6 +7,7 @@ __pycache__/
 # Nastavení AI agentů: každý si ho vytvoří lokálně podle AGENTS.md
 .claude/
 .codex/
+.agents/
 .cursor/
 .gemini/
 .windsurf/
