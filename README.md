@@ -1,27 +1,21 @@
 # ai-agent-data-lab
 
-Datová laboratoř pro analýzu dat s AI agentem. Obsahuje připravené prostředí pro Python a katalog zadání. Agent se na začátku zeptá, jaké téma chcete řešit, a připraví vám pracovní složku i s daty.
+Připravené prostředí pro analýzu dat s AI agentem: Python (uv, pandas, DuckDB a další), Node.js a pokyny pro agenta v `AGENTS.md`.
 
 ```
-├── AGENTS.md          # pokyny pro AI agenta (CLAUDE.md na ně odkazuje)
-├── zadani/            # katalog zadání: každé ve vlastní složce
-│   └── _sablona/      # šablona pro nové zadání
-├── prace/             # vaše analýzy (vzniká lokálně, do gitu nejde)
-└── scripts/kontrola.py
+├── AGENTS.md          # pokyny pro AI agenta (role, oprávnění, prostředí)
+├── data/              # sem patří vstupní data
+├── scripts/kontrola.py
+└── pyproject.toml, uv.lock, requirements.txt
 ```
 
-Pokyny pro agenta jsou v `AGENTS.md`, společném formátu, který čte řada AI agentů. Návod níže počítá s Claude Code.
+`AGENTS.md` je společný formát, který čte řada AI agentů (Claude Code od verze 2.1.277, Codex, Cursor, Gemini CLI a další). Při prvním spuštění agent pozná, jakým je nástrojem, a nabídne, že si podle `AGENTS.md` vytvoří vlastní nastavení (`.claude/`, `.codex/` …). Tato nastavení zůstávají lokálně a do gitu nejdou.
 
 ## Jak začít
-Po instalaci (níže) otevřete složku repozitáře v agentovi a napište třeba `Ahoj`. Agent:
-1. nabídne témata z `zadani/`, vlastní téma, nebo pokračování v rozpracované práci,
-2. po výběru založí `prace/<tema>/` se zadáním, stáhne data a udělá jejich první přehled,
-3. dál s vámi pracuje jen v této složce.
-
-Nová zadání z katalogu získáte příkazem `git pull`. Vaše práce v `prace/` zůstává jen u vás.
+Po instalaci (níže) vložte data do `data/`, otevřete složku v agentovi a napište, co chcete zjistit.
 
 ## Instalace
-Zabere asi 15–20 minut. Všechny příkazy se píšou do **terminálu**: na Windows je to PowerShell (Start → napište „PowerShell“), na Macu aplikace Terminál.
+Návod počítá s Claude Code, ale jiný agent, který čte `AGENTS.md`, poslouží stejně. Zabere asi 15–20 minut. Všechny příkazy se píšou do **terminálu**: na Windows je to PowerShell (Start → napište „PowerShell“), na Macu aplikace Terminál.
 
 ### Krok 1: Co potřebujete mít
 - **Účet Claude Pro** (nebo vyšší). S free účtem Claude Code nefunguje.
@@ -101,13 +95,7 @@ Ve VS Code (`code .`) otevřete panel Claude Code. Pokud se zeptá na přihláš
 ```bash
 uv run python scripts/kontrola.py
 ```
-Na konci musí být **„Prostředí je připravené.“** U každé chyby skript napíše, co udělat. Můžete také agentovi napsat `Zkontroluj prostředí`.
-
-## Přidání vlastního zadání
-1. Zkopírujte `zadani/_sablona/` do `zadani/<nazev-tematu>/` (malá písmena, bez diakritiky, pomlčky).
-2. Vyplňte `ZADANI.md`.
-3. Pokud se data dají stáhnout, přidejte `data.py`, který je uloží do `data/` vedle sebe. Velká data do repozitáře nepatří.
-4. Pošlete pull request. Nová zadání jsou vítaná.
+Na konci musí být **„Prostředí je připravené.“** Kontrola vyžaduje Claude Code 2.1.277 nebo novější (starší verzi aktualizujete příkazem `claude update`). U každé chyby skript napíše, co udělat. Můžete také agentovi napsat `Zkontroluj prostředí`.
 
 ## Když něco nejde
 - **Program „není rozpoznán“ nebo „command not found“:** otevřete nový terminál. Pokud běží VS Code, zavřete ho celý a otevřete znovu.
@@ -117,4 +105,4 @@ Na konci musí být **„Prostředí je připravené.“** U každé chyby skrip
 - **Nemáte `uv`:** knihovny jdou nainstalovat i přes pip ze souboru `requirements.txt` (Python 3.13).
 
 ## Licence
-MIT. Data v zadáních mají vlastní licence uvedené v jednotlivých `ZADANI.md`.
+MIT.

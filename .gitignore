@@ -3,5 +3,10 @@ __pycache__/
 .pytest_cache/
 *.duckdb
 *.duckdb.wal
-.claude/settings.local.json
-prace/
+
+# Nastavení AI agentů: každý si ho vytvoří lokálně podle AGENTS.md
+.claude/
+.codex/
+.cursor/
+.gemini/
+.windsurf/

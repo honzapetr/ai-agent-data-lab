@@ -127,6 +127,8 @@ def main():
     code, out = run("claude", "--version")
     if code != 0:
         fail("Claude Code", "Nenalezen. Viz README, krok 2.")
+    elif (version(out) or (0, 0, 0)) < (2, 1, 277):
+        fail(f"Claude Code {out}", "Potřeba verze 2.1.277 nebo novější (čte AGENTS.md). Spusťte: claude update")
     else:
         ok(f"Claude Code {out}")
         code, out = run("claude", "auth", "status", "--json")
