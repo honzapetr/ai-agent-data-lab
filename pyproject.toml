@@ -1,7 +1,7 @@
 [project]
-name = "analyza-dopravy-brno"
+name = "ai-agent-data-lab"
 version = "1.0.0"
-description = "Analýza dopravních dat Waze z Brna"
+description = "Datová laboratoř pro práci s AI agentem: katalog zadání a připravené prostředí pro Python"
 readme = "README.md"
 requires-python = ">=3.13,<3.14"
 # Verze jsou pevné, aby všichni měli stejné prostředí a stejná čísla.

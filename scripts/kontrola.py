@@ -1,11 +1,10 @@
-"""Kontrola prostředí před workshopem MAIDAY 2026.
+"""Kontrola prostředí pro ai-agent-data-lab.
 
 Spuštění ve složce repozitáře:
     uv run python scripts/kontrola.py
 
 Vypíše [OK] nebo [CHYBA] s poznámkou, co udělat. Nic nemění.
 """
-import hashlib
 import json
 import os
 import re
@@ -17,7 +16,6 @@ from importlib import metadata
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-DATA = ROOT / "data"
 
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(errors="replace")
@@ -75,15 +73,6 @@ def main():
         fail("Knihovny Pythonu", "; ".join(bad) + ". Spusťte: uv sync")
     else:
         ok(f"Knihovny Pythonu ({len(deps)})")
-
-    # Data
-    manifest = json.loads((DATA / "manifest.json").read_text(encoding="utf-8"))
-    for name, meta in manifest["soubory"].items():
-        path = DATA / name
-        if not path.exists() or hashlib.sha256(path.read_bytes()).hexdigest() != meta["sha256"]:
-            fail(f"Data {name}", "Soubor chybí nebo je poškozený. Stáhněte repozitář znovu.")
-        else:
-            ok(f"Data {name} ({meta['radku']} řádků)")
 
     # Nástroje
     code, out = run("python3" if sys.platform == "darwin" else "python", "--version")
@@ -151,7 +140,7 @@ def main():
     if errors:
         print(f"Počet chyb: {errors}. Opravte je a spusťte kontrolu znovu.")
         sys.exit(1)
-    print("Vše připraveno na workshop.")
+    print("Prostředí je připravené.")
 
 
 if __name__ == "__main__":

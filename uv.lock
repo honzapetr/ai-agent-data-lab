@@ -8,7 +8,7 @@ resolution-markers = [
 ]
 
 [[package]]
-name = "analyza-dopravy-brno"
+name = "ai-agent-data-lab"
 version = "1.0.0"
 source = { virtual = "." }
 dependencies = [
